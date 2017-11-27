@@ -1,0 +1,100 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("code") %>
+                <th class="text-center"><%= t('.code') %></th>
+            <% end %> 
+            <% if get_columns(params).include?("name") %>
+                <th class="text-center"><%= t('.name') %></th>
+            <% end %>
+            <% if get_columns(params).include?("birthday") %>
+                <th class="text-center"><%= t('.birthday') %></th>
+            <% end %>
+            <% if get_columns(params).include?("email") %>
+                <th class="text-center"><%= t('.email') %></th>
+            <% end %>
+            <% if get_columns(params).include?("phone") %>
+                <th class="text-center"><%= t('.phone') %></th>
+            <% end %>
+            <% if get_columns(params).include?("address") %>
+                <th class="text-center"><%= t('.address') %></th>
+            <% end %> 
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center"><%= t('creator') %></th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th class="sortable" sort-by='erp_employees_departments.created_at'>
+                    <%= t('created_at') %>
+                </th>
+            <% end %>
+            <th width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @employees.each do |employee| %>
+            <tr class="odd gradeX">
+                <td>
+                    <%= erp_datalist_check_row(id: employee.id) %>
+                </td>
+                <% if get_columns(params).include?("code") %>
+                    <td><%= employee.code %></td>
+                <% end %>
+                <% if get_columns(params).include?("name") %>
+                    <td>
+                        <%= link_to employee.name, erp_employees.edit_backend_employee_path(employee), class: 'title' %>                        
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("birthday") %>
+                    <td><%= employee.birthday.strftime("%d/%m/%Y") %></td>
+                <% end %>
+                <% if get_columns(params).include?("email") %>
+                    <td><%= employee.email %></td>
+                <% end %>
+                <% if get_columns(params).include?("phone") %>
+                    <td><%= employee.phone %></td>
+                <% end %>
+                <% if get_columns(params).include?("address") %>
+                    <td><%= employee.address %></td>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <td class="text-center">
+                        <%= erp_component('avatar', {
+                            user: employee.creator
+                        }) %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td><%= employee.created_at.strftime("%d/%m/%Y") %></td>
+                <% end %>
+                <td class="text-right">
+                    <%= erp_datalist_row_actions(
+                        [
+                            {
+                                text: '<i class="fa fa-edit"></i> '+t('edit'),
+                                href: erp_employees.edit_backend_employee_path(employee)
+                            },
+                            {
+                                divider: true
+                            },
+                            {
+                                text: '<i class="fa fa-trash"></i> '+t('.delete'),
+                                url: erp_employees.backend_employee_path(employee),
+                                data_method: 'DELETE',
+                                class: 'ajax-link',
+                                data_confirm: t('delete_confirm')
+                            }
+                        ]
+                    ) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @employees.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
+        
+<%= erp_datalist_pagination(@employees) %>

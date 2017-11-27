@@ -1,0 +1,54 @@
+<%= form_for([erp_employees, :backend, department], html: {multipart: true}) do |f| %>
+    <div class="form-body">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= erp_form_control("text", {
+                            name: 'department[name]',
+                            value: department.name,                   
+                            label: t('.name'),
+                            placeholder: t('.enter_name'),
+                            required: true,
+                            errors: department.errors.full_messages_for(:name)
+                        }) %>
+                        <%= erp_form_control("dataselect", {
+                            name: 'department[employee_id]',
+                            value: department.employee_id,
+                            text: department.employee_name,
+                            placeholder: t('.choose_employee'),
+                            label: t('.employee'),
+                            help: t('.help_employee'),
+                            url: erp_employees.dataselect_backend_employees_path(format: 'json'),
+                            create: {
+                                url: erp_employees.new_backend_employee_path,
+                                title: t('.create_employee'),
+                                container_selector: '.new_employee',
+                                input_selector: 'input[name="employee[name]"]'
+                            },
+                            edit: {
+                                url: erp_employees.edit_backend_employee_path(id: ':value'),
+                                title: t('.edit_employee'),
+                                container_selector: '.edit_employee',
+                            }
+                        }) %>
+                        <%= erp_form_control("textarea", {
+                            name: 'department[description]',
+                            value: department.description,                   
+                            label: t('.description'),
+                            placeholder: t('.enter_description')
+                        }) %> 
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp_employees.backend_departments_path
+    }) %>
+<% end %>

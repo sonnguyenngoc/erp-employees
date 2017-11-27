@@ -1,0 +1,26 @@
+<li class="nav-item <%= "active open" if ["erp/employees/backend/departments",
+                                          "erp/employees/backend/employees"].include?(params[:controller]) %>">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="fa fa-book"></i>
+        <span class="title"><%= t('.employee') %></span>
+        <% if ["erp/employees/backend/departments",
+               "erp/employees/backend/employees"].include?(params[:controller]) %>
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        <% else %>
+            <span class="arrow"></span>
+        <% end %>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item <%= "active open" if ["erp/employees/backend/employees"].include?(params[:controller]) %>">
+            <a href="<%= erp_employees.backend_employees_path %>" class="nav-link">
+                <span class="title"><%= t('.employees') %></span>
+            </a>
+        </li>
+        <li class="nav-item <%= "active open" if ["erp/employees/backend/departments"].include?(params[:controller]) %>">
+            <a href="<%= erp_employees.backend_departments_path %>" class="nav-link">
+                <span class="title"><%= t('.departments') %></span>
+            </a>
+        </li>
+    </ul>
+</li>

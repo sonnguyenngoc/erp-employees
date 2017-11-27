@@ -1,0 +1,79 @@
+vi:
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          employee: "Quản lý nhân viên"
+          departments: "Danh sách phòng ban"
+          employees: "Danh sách nhân viên"
+  erp:
+    employees:
+      backend:
+        departments:
+          create:
+            success: "Thêm phòng ban thành công."
+          update:
+            success: "Cập nhật thông tin phòng ban thành công."
+          destroy:
+            success: "Xóa phòng ban thành công."
+          delete_all:
+            success: "Xóa phòng ban được chọn thành công."
+          index:
+            departments: "Danh sách phòng ban"
+            name: "Tên phòng ban"
+            create: "Thêm phòng ban"
+            delete: "Xóa phòng ban"
+          list:
+            name: "Tên phòng ban"
+            delete: "Xóa phòng ban"
+            no_matching_records_found: "Danh sách phòng ban hiện tại đang trống."
+          new:
+            departments: "Danh sách phòng ban"
+            create: "Thêm phòng ban"
+          edit:
+            departments: "Danh sách phòng ban"
+            create: "Thêm phòng ban"
+          form:
+            name: "Tên phòng ban"
+            enter_name: "Nhập tên phòng ban..."
+            description: "Mô tả"
+            enter_description: "Nhập mô tả..."
+            employee: "Trưởng phòng"
+            help_employee: "Trưởng phòng của phòng ban"
+            choose_employee: "Chọn trưởng phòng"
+        employees:
+          create:
+            success: "Thêm nhân viên thành công."
+          update:
+            success: "Cập nhật thông tin nhân viên thành công."
+          destroy:
+            success: "Xóa nhân viên thành công."
+          delete_all:
+            success: "Xóa nhân viên được chọn thành công."
+          index:
+            employees: "Danh sách nhân viên"
+            code: "Mã nhân viên"
+            name: "Tên nhân viên"
+            birthday: "Ngày sinh"
+            email: "Email"
+            phone: "Số điện thoại"
+            address: "Địa chỉ"
+            create: "Thêm nhân viên"
+            delete: "Xóa nhân viên"
+            department: "Phòng ban"
+          list:
+            code: "Mã nhân viên"
+            name: "Tên nhân viên"
+            birthday: "Ngày sinh"
+            email: "Email"
+            phone: "Số điện thoại"
+            address: "Địa chỉ"
+            delete: "Xóa nhân viên"
+            no_matching_records_found: "Danh sách nhân viên hiện tại đang trống."
+          new:
+            employees: "Danh sách nhân viên"
+            create: "Thêm nhân viên"
+          edit:
+            employees: "Danh sách nhân viên"
+            create: "Thêm nhân viên"
+          form:
